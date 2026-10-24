@@ -1,0 +1,31 @@
+:root {
+  /* Bang mau chuan */
+  --color-primary: #2563eb;       /* mau xanh cong nghe */
+  --color-primary-hover: #1d4ed8;
+  --color-danger: #ef4444;        /* ma do giam gia*/
+  --color-warning: #f59e0b;       /* vang cam sao danh gia */
+  --color-success: #10b981;
+
+  /* mau chu */
+  --text-main: #111827;           /* den dam cho tieu de va gia tien */
+  --text-muted: #6b7280;          /* xam cho mo ta, so luot xem */
+  --text-light: #9ca3af;
+
+  /* nen va vien */
+  --bg-body: #f9fafb;             /* xam nhat toan trang */
+  --bg-card: #ffffff;             /* nen trang card san pham, form */
+  --bg-subtle: #f3f4f6;           /* nen o a thong so, bang ky thuat */
+  --border-color: #e5e7eb;        /* vien ke bang ,card */
+  --border-dark: #d1d5db;
+
+  /* Bo goc va do bong */
+  --radius-sm: 4px;
+  --radius-md: 8px;               /* cho nut bam ,the san pham, */
+  --radius-lg: 12px;
+  --radius-full: 9999px;          /* badge, tag tròn */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+  /* Layout */
+  --max-width: 1240px;            /* chieu rong khung trang */
+}
