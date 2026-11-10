@@ -124,6 +124,17 @@ export default function HomePage() {
             ))}
           </div>
         )}
+
+        {/* xem them */}
+        <div style={{ textAlign: 'center', marginTop: '28px' }}>
+          <button
+            className="btn-outline"
+            style={{ padding: '10px 32px', fontWeight: 600 }}
+            onClick={() => window.location.href = '/search'}
+          >
+            Xem thêm sản phẩm
+          </button>
+        </div>
       </section>
 
       {/* khoi cam ket dich vu */}
