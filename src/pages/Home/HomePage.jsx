@@ -4,7 +4,7 @@ import ProductCard from '../../components/common/ProductCard';
 import { Truck, RotateCcw, ShieldCheck, Gift } from 'lucide-react';
 import './HomePage.css';
 
-// Dữ liệu mẫu hiển thị ngay lập tức trong khi chờ Render thức dậy
+// du lieu mau truoc khi render bat
 const DEFAULT_CATEGORIES = [
   { category_id: 1, name: 'Điện thoại', icon: '📱' },
   { category_id: 2, name: 'Laptop', icon: '💻' },
@@ -13,6 +13,18 @@ const DEFAULT_CATEGORIES = [
   { category_id: 5, name: 'Tablet', icon: '📟' },
   { category_id: 6, name: 'Camera', icon: '📷' }
 ];
+
+// ham tu dong gan icon danh sach theo db
+const getCategoryIcon = (name = '') => {
+  const lower = name.toLowerCase();
+  if (lower.includes('thoại') || lower.includes('phone')) return '📱';
+  if (lower.includes('laptop')) return '💻';
+  if (lower.includes('máy tính') || lower.includes('pc')) return '🖥️';
+  if (lower.includes('phụ kiện')) return '🎧';
+  if (lower.includes('tablet') || lower.includes('ipad')) return '📟';
+  if (lower.includes('camera') || lower.includes('ảnh')) return '📷';
+  return '📦';
+};
 
 export default function HomePage() {
   const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
@@ -26,7 +38,7 @@ export default function HomePage() {
         setLoading(true);
         const [catRes, prodRes] = await Promise.allSettled([
           axiosClient.get('/categories'),
-          axiosClient.get('/products?limit=8')
+          axiosClient.get(`/products?limit=8&sort=${activeTab}`)
         ]);
 
         if (catRes.status === 'fulfilled' && catRes.value.data?.data?.length > 0) {
@@ -44,7 +56,7 @@ export default function HomePage() {
     };
 
     fetchData();
-  }, []);
+  }, [activeTab]);
 
   return (
     <div className="home-container">
@@ -70,7 +82,7 @@ export default function HomePage() {
         <div className="home-categories-grid">
           {categories.map((cat) => (
             <div key={cat.category_id} className="home-category-card">
-              <div className="cat-icon-box">{cat.icon || '📦'}</div>
+              <div className="cat-icon-box">{cat.icon || getCategoryIcon(cat.name)}</div>
               <span className="cat-name">{cat.name}</span>
             </div>
           ))}
@@ -114,7 +126,7 @@ export default function HomePage() {
         )}
       </section>
 
-      {/*khoi cam ket dich vu*/}
+      {/* khoi cam ket dich vu */}
       <section className="container home-services-section">
         <div className="home-services-grid">
           <div className="service-card">
